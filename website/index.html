@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="ControlRoom3D creates diverse and plausible 3D scene meshes given a rough semantic layout and an overall style description">
+  <meta name="keywords" content="ControlRoom3D, 3D Scene Generation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ControlRoom3D 🤖</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <a class="navbar-item" href="https://jonasschult.github.io/">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+        </a>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More Research
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://human-3d.github.io/">
+              Human3D 🧑‍🤝‍🧑
+            </a>
+            <a class="navbar-item" href="https://jonasschult.github.io/Mask3D/">
+              Mask3D 🎭
+            </a>
+            <a class="navbar-item" href="https://yilmazkadir.github.io/Mask4D/">
+              Mask4D
+            </a>
+            <a class="navbar-item" href="https://ywyue.github.io/AGILE3D/">
+              AGILE3D
+            </a>
+            <a class="navbar-item" href="https://point2vec.ka.codes/">
+              Point2Vec
+            </a>
+            <a class="navbar-item" href="https://kumuji.github.io/mix3d/">
+              Mix3D
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">ControlRoom3D 🤖<br />Room Generation using<br />Semantic Proxy
+              Rooms
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://jonasschult.github.io/">Jonas Schult</a><sup>1,2,*</sup>,</span>
+              <span class="author-block">
+                <a href="https://www.linkedin.com/in/sstsai/">Sam Tsai</a><sup>2</sup>,</span>
+              <span class="author-block">
+                <a href="https://niessnerlab.org/members/lukas_hoellein/profile.html">Lukas Höllein</a><sup>2,3*</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.linkedin.com/in/bichenwu/">Bichen Wu</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://sites.google.com/view/jialiangwang/home">Jialiang Wang</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://chihyaoma.github.io/">Chih-Yao Ma</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://kunpengli1994.github.io/">Kunpeng Li</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://minione.github.io/">Xiaofang Wang</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://fwmb.github.io/">Felix Wimbauer</a><sup>2,3*</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.linkedin.com/in/zijian-he-06727176/">Zijian He</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.linkedin.com/in/zijian-he-06727176/">Peizhao Zhang</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.vision.rwth-aachen.de/person/1/">Bastian Leibe</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://sites.google.com/site/vajdap">Peter Vajda</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://sekunde.github.io/">Ji Hou</a><sup>2</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>RWTH Aachen University,</span>
+              <span class="author-block"><sup>2</sup>Meta GenAI,</span>
+              <span class="author-block"><sup>3</sup>Technical University of Munich</span>
+            </div>
+            <div class="is-size-6 publication-authors">
+              <span class="author-block"><sup>*</sup>Work performed during internship at Meta GenAI.</span>
+            </div>
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Video Link. -->
+                <span class="link-block">
+                  <a href="./static/videos/full_video.mp4" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                    </span>
+                    <span>Video</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video id="teaser" autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/topdown/children_room.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">
+          <span class="dnerf">ControlRoom3D</span> creates diverse and plausible 3D room meshes aligning well with
+          user-defined room layouts and textual descriptions of the room style.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="hero is-light is-small">
+    <div class="hero-body">
+      <div class="container">
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="item item-steve">
+            <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/topdown/living_room.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-chair-tp">
+            <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/topdown/bedroom.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-shiba">
+            <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/topdown/kitchen.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-fullbody">
+            <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/topdown/bathroom.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Manually creating 3D environments for AR/VR applications is a complex process requiring expert knowledge
+              in 3D modeling software.
+              Pioneering works facilitate this process by generating room meshes conditioned on textual style
+              descriptions.
+              Yet, many of these automatically generated 3D meshes do not adhere to typical room layouts, compromising
+              their plausibility, <i>e.g.</i>, by placing several beds in one bedroom.
+              To address these challenges, we present <span class="dnerf">ControlRoom3D</span>, a novel method to
+              generate high-quality room meshes.
+              Central to our approach is a user-defined 3D semantic proxy room that outlines a rough room layout based
+              on semantic bounding boxes and a textual description of the overall room style.
+              Our key insight is that when rendered to 2D, this 3D representation provides valuable geometric and
+              semantic information to control powerful 2D models to generate 3D consistent textures and geometry that
+              aligns well with the proxy room.
+              Backed up by an extensive study including quantitative metrics and qualitative user evaluations, our
+              method generates diverse and globally plausible 3D room meshes, thus empowering users to design 3D rooms
+              effortlessly without specialized knowledge.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+
+      <!-- Paper video. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Video</h2>
+          <div class="publication-video">
+            <video controls poster="./static/images/poster.jpg">
+              <source src="./static/videos/full_video.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+      <!--/ Paper video. -->
+    </div>
+  </section>
+
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{schult23controlroom3d,
+  author    = {Schult, Jonas and Tsai, Sam and H\"ollein, Lukas and Wu, Bichen and Wang, Jialiang and Ma, Chih-Yao and Li, Kunpeng and Wang, Xiaofang and Wimbauer, Felix and He, Zijian and Zhang, Peizhao and Leibe, Bastian and Vajda, Peter and Hou, Ji},
+  title     = {ControlRoom3D: Room Generation using Semantic Proxy Rooms},
+  journal   = {arXiv},
+  year      = {2023},
+}</code></pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <a class="icon-link" href="./static/videos/nerfies_paper.pdf">
+          <i class="fas fa-file-pdf"></i>
+        </a>
+        <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              Website source code borrowed from <a href="https://github.com/nerfies/nerfies.github.io">here</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
