@@ -279,9 +279,92 @@
         </div>
       </div>
       <!--/ Paper. -->
-
     </div>
   </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+
+    <!-- Animation. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Animations</h2>
+
+        <!-- Interpolating. -->
+        <h3 class="title is-4">Geometry Alignment</h3>
+        <div class="content has-text-justified">
+          <p>
+            Scale ambiguity leads to significant inaccuracies in state-of-the-art metric depth estimators such as <a href="https://arxiv.org/abs/2302.12288">ZoeDepth</a>.
+            In contrast, our proposed depth alignment module iteratively optimizes the alignment loss to achieve strong alignment with the proxy room.
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/depth_align/depth_align_t_000.jpg"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+            <p>No Optimization</p>
+          </div>
+          <div class="column interpolation-video-column">
+            <div id="interpolation-image-wrapper">
+              Loading...
+            </div>
+            <input class="slider is-fullwidth is-large is-info"
+                   id="interpolation-slider"
+                   step="1" min="0" max="3" value="0" type="range">
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/depth_align/depth_align_t_003.jpg"
+                 class="interpolation-image"
+                 alt="Interpolation end reference image."/>
+            <p class="is-bold">After Depth Alignment</p>
+          </div>
+        </div>
+        <br/>
+        <!--/ Interpolating. -->
+
+        <div class="columns is-centered">
+
+          <!-- Visual Effects. -->
+          <div class="column">
+            <div class="content">
+              <h2 class="title is-4">SAM Masks</h2>
+              <p>
+                We leverage <a href="https://segment-anything.com/">SAM</a> to obtain pixel-precise instance masks for each object.
+                For pixels located within the rendered bounding box but outside the SAM mask, we assign the near depth value to the far depth.
+                Including SAM masks leads to sharper 3D object boundaries, resulting in a more seamless integration into the 3D room mesh.
+                <br />
+              </p>
+              <div class="card card_sam"></div>
+              (Hover over image to see the effect.)
+            </div>
+          </div>
+          <!--/ Visual Effects. -->
+    
+          <!-- Matting. -->
+          <div class="column">
+            <h2 class="title is-4">Normal Loss</h2>
+            <div class="columns is-centered">
+              <div class="column content">
+                <p>
+                  Although the depth alignment loss effectively aligns the frame with the 3D proxy room, it may occasionally distort the surface of objects to fit them within their bounding boxes.
+                  To counter this, we introduce the normal preservation loss, retaining the original shape of the objects.
+                  <br /><br />
+                </p>
+                <div class="card card_normal"></div>
+                (Hover over image to see the effect.)
+              </div>
+    
+            </div>
+          </div>
+        </div>
+        <!--/ Matting. -->
+
+      </div>
+    </div>
+    <!--/ Animation. -->
+    </div>
+    </section>
 
 
   <section class="section" id="BibTeX">

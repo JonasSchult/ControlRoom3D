@@ -155,3 +155,45 @@ body {
 #interpolation-image-wrapper img {
   border-radius: 5px;
 }
+
+.card2 {
+  width: 100%; /* Full width of the parent container */
+  padding-top: 56.03864734%; /* Aspect ratio padding */
+  background: url("../../static/images/depth_align/depth_align_t_000.jpg") no-repeat;
+  background-size: contain; /* Cover the entire area of the div */
+  display: inline-block;
+  transition: all 250ms;
+}
+
+.card2:hover {
+  background: url("../../static/images/depth_align/depth_align_t_003.jpg") no-repeat;
+  background-size: contain;
+}
+
+.card_sam {
+  width: 100%; /* Full width of the parent container */
+  padding-top: 49.86702128%; /* Aspect ratio padding */
+  background: url("../../static/images/depth_loss/sam_masks1.jpg") no-repeat;
+  background-size: contain; /* Cover the entire area of the div */
+  display: inline-block;
+  transition: all 250ms;
+}
+
+.card_sam:hover {
+  background: url("../../static/images/depth_loss/sam_masks2.jpg") no-repeat;
+  background-size: contain;
+}
+
+.card_normal {
+  width: 100%; /* Full width of the parent container */
+  padding-top: 49.86702128%; /* Aspect ratio padding */
+  background: url("../../static/images/depth_loss/normal_loss1.jpg") no-repeat;
+  background-size: contain; /* Cover the entire area of the div */
+  display: inline-block;
+  transition: all 250ms;
+}
+
+.card_normal:hover {
+  background: url("../../static/images/depth_loss/normal_loss2.jpg") no-repeat;
+  background-size: contain;
+}

@@ -1,12 +1,12 @@
 window.HELP_IMPROVE_VIDEOJS = false;
 
-var INTERP_BASE = "./static/interpolation/stacked";
-var NUM_INTERP_FRAMES = 240;
+var INTERP_BASE = "./static/images/depth_align";
+var NUM_INTERP_FRAMES = 4;
 
 var interp_images = [];
 function preloadInterpolationImages() {
   for (var i = 0; i < NUM_INTERP_FRAMES; i++) {
-    var path = INTERP_BASE + '/' + String(i).padStart(6, '0') + '.jpg';
+    var path = INTERP_BASE + '/' + 'depth_align_t_' + String(i).padStart(3, '0') + '.jpg';
     interp_images[i] = new Image();
     interp_images[i].src = path;
   }
